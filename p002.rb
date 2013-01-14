@@ -12,9 +12,9 @@
 # four million, find the sum of the even-valued terms.
 #
 
-def fibonacci(max)
+def fibonacci_upto(max)
   result = [1, 2]
-  result[result.size] = result[-1] + result[-2] until result[-1] >= max
+  result << result[-1] + result[-2] until result[-1] >= max
   result
 end
 
@@ -22,5 +22,5 @@ def sum_even(ary)
   ary.select {|x| x % 2 == 0 }.inject {|sum, x| sum + x }
 end
 
-p sum_even(fibonacci(4000000))
+p sum_even(fibonacci_upto(4e6))
 # => 4613732
