@@ -16,12 +16,18 @@
 # natural numbers and the square of the sum.
 #
 
+class Array
+  def sum
+    inject {|sum, x| sum + x }
+  end
+end
+
 def sum_square_upto(max)
-  (1..max).map {|x| x ** 2 }.inject {|sum, x| sum + x }
+  (1..max).map {|x| x ** 2 }.sum
 end
 
 def square_sum_upto(max)
-  (1..max).inject(0) {|sum, x| sum + x } ** 2
+  (1..max).to_a.sum ** 2
 end
 
 p (sum_square_upto(100) - square_sum_upto(100)).abs
