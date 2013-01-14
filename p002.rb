@@ -12,15 +12,21 @@
 # four million, find the sum of the even-valued terms.
 #
 
+class Array
+  def even
+    select {|x| x % 2 == 0 }
+  end
+
+  def sum
+    inject {|sum, x| sum + x }
+  end
+end
+
 def fibonacci_upto(max)
   result = [1, 2]
   result << result[-1] + result[-2] until result[-1] >= max
   result
 end
 
-def sum_even(ary)
-  ary.select {|x| x % 2 == 0 }.inject {|sum, x| sum + x }
-end
-
-p sum_even(fibonacci_upto(4e6))
+p fibonacci_upto(4e6).even.sum
 # => 4613732
