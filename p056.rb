@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# Problem 56
+# Powerful digit sum
 # http://projecteuler.net/problem=56
 #
 # A googol (10**100) is a massive number: one followed by one-hundred zeros;
@@ -12,11 +12,11 @@
 #
 
 class Integer
-  def digitsum
-    to_s.chars.inject(0) {|sum, x| sum + x.to_i }
+  def powerful_digit_sum
+    to_s.chars.map(&:to_i).inject(0) {|sum, x| sum + x }
   end
 end
 
 a = b = (1...100).to_a
-p a.product(b).collect {|a, b| (a**b).digitsum }.max
+p a.product(b).map {|a, b| (a**b).powerful_digit_sum }.max
 # => 972

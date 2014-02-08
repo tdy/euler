@@ -18,7 +18,7 @@ end
 
 result = 1
 loop do
-  break if (2..6).collect {|x| result.permuted_multiple_of?(result*x) }.all? {|x| x == true }
+  break if (2..6).map {|x| result.permuted_multiple_of?(result*x) }.all? {|x| x == true }
   result += 1
 end
 p result
