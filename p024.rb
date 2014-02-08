@@ -14,5 +14,5 @@
 # 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 #
 
-p "0123456789".chars.to_a.permutation.map(&:join).sort[1e6-1].to_i
+p "0123456789".chars.permutation.map(&:join).sort[1e6-1].to_i
 # => 2783915460

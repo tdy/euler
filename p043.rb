@@ -37,7 +37,7 @@ class String
 end
 
 result = 0
-"0123456789".chars.to_a.permutation.map(&:join).map do |perm|
+"0123456789".chars.permutation.map(&:join).map do |perm|
   next if perm[0] == 0
   result += perm.to_i if perm.pandigi_subdivi?
 end
