@@ -8,5 +8,15 @@
 # Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 #
 
-p (1..1000).each.inject {|sum, x| sum + x**x }.to_s[-10..-1]
+class Integer
+  def self_power
+    downto(1).inject {|sum, x| sum + x**x }
+  end
+
+  def tail(num)
+    modulo(10**num)
+  end
+end
+
+p 1000.self_power.tail(10)
 # => 9110846700
