@@ -11,5 +11,11 @@
 # Find the sum of the digits in the number 100!
 #
 
-p (1..100).inject(:*).to_s.chars.inject(0) {|sum, x| sum + x.to_i }
+class Integer
+  def factorial_digit_sum
+    downto(1).inject(:*).to_s.chars.map(&:to_i).inject(0) {|sum, x| sum + x }
+  end
+end
+
+p 100.factorial_digit_sum
 # => 648
