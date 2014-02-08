@@ -8,5 +8,11 @@
 # What is the sum of the digits of the number 2^1000?
 #
 
-p (2**1000).to_s.chars.inject(0) {|sum, x| sum + x.to_i }
+class Integer
+  def power_digit_sum
+    to_s.chars.map(&:to_i).inject(0) {|sum, x| sum + x }
+  end
+end
+
+p (2**1000).power_digit_sum
 # => 1366
