@@ -9,7 +9,7 @@
 
 class Array
   def headsum(n)
-    inject(0) {|sum, x| sum + x }.to_s[0,n].to_i
+    inject(:+).to_s[0,n].to_i
   end
 end
 

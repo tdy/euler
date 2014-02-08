@@ -18,7 +18,7 @@
 
 class Array
   def sum
-    inject {|sum, x| sum + x }
+    inject(:+)
   end
 end
 

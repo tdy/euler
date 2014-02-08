@@ -10,7 +10,7 @@
 #
 
 def sum_of_multiples(m1, m2, max)
-  (1...max).select {|x| x % m1 == 0 or x % m2 == 0 }.inject(0) {|sum, x| sum + x }
+  (1...max).select {|x| x % m1 == 0 or x % m2 == 0 }.inject(:+)
 end
 
 p sum_of_multiples(3, 5, 1000)
