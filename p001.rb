@@ -9,9 +9,17 @@
 # Find the sum of all the multiples of 3 or 5 below 1000.
 #
 
-def sum_of_multiples(m1, m2, max)
-  (1...max).select {|x| x % m1 == 0 or x % m2 == 0 }.inject(:+)
+class Range
+  def multiples_of(ary)
+    select {|x| ary.any? {|a| x % a == 0 }}
+  end
 end
 
-p sum_of_multiples(3, 5, 1000)
+class Array
+  def sum
+    inject(:+)
+  end
+end
+
+p (1...1000).multiples_of([3, 5]).sum
 # => 233168
