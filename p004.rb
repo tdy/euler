@@ -9,13 +9,17 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 #
 
-class Fixnum
+class Integer
   def palindrome?
     to_s.reverse == to_s
   end
 end
 
-results, tridigits = [], 100..999
-tridigits.each {|x| tridigits.each {|y| results << x*y if (x*y).palindrome? }}
-p results.max
+class Range
+  def palindrome_product
+    to_a.product(to_a).map {|x, y| x*y if (x*y).palindrome? }.compact
+  end
+end
+
+p (100..999).palindrome_product.max
 # => 906609
