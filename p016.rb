@@ -10,7 +10,7 @@
 
 class Integer
   def power_digit_sum
-    to_s.chars.map(&:to_i).inject(0) {|sum, x| sum + x }
+    to_s.chars.map(&:to_i).inject(:+)
   end
 end
 
