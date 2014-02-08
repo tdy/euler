@@ -12,13 +12,17 @@
 # leading zeros.)
 #
 
-class String
-  def palindrome?
-    self == reverse
+class Integer
+  def palindrome_in_base?(base=10)
+    to_s(base) == to_s(base).reverse
   end
 end
 
-sum = 0
-1.upto(1e6).map {|x| sum += x if x.to_s.palindrome? and x.to_s(2).palindrome? }
-p sum
+class Array
+  def sum
+    inject(:+)
+  end
+end
+
+p (1...1e6).select {|x| x.palindrome_in_base? and x.palindrome_in_base?(2) }.sum
 # => 872187
