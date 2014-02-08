@@ -14,5 +14,12 @@
 # 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 #
 
-p "0123456789".chars.permutation.map(&:join).sort[1e6-1].to_i
-# => 2783915460
+class Array
+  def lexographic_permutations
+    permutation.map(&:join).sort
+  end
+end
+
+digits = (0..9).to_a
+p digits.lexographic_permutations[1e6-1]
+# => "2783915460"
