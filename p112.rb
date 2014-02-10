@@ -24,18 +24,22 @@
 
 class Integer
   def increasing?
+    raise "n.increasing? is undefined for n < 10" if self < 10
     to_s.chars.each_cons(2) {|x, y| return false if x > y } or true
   end
 
   def decreasing?
+    raise "n.decreasing? is undefined for n < 10" if self < 10
     to_s.chars.each_cons(2) {|x, y| return false if x < y } or true
   end
 
   def bouncy?
+    raise "n.bouncy? is undefined for n < 10" if self < 10
     not increasing? and not decreasing?
   end
 
   def bounciness
+    raise "n.bounciness is undefined for n < 10" if self < 10
     bouncy? ? 1 : 0
   end
 end
@@ -46,5 +50,5 @@ class Enumerator
   end
 end
 
-p 1.upto(Float::INFINITY).min_with_bouncy_ratio_of(0.99)
+p 10.upto(Float::INFINITY).min_with_bouncy_ratio_of(0.99)
 # => 1587000
