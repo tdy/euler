@@ -46,7 +46,7 @@ end
 
 class Enumerator
   def min_with_bouncy_ratio_of(ratio)
-    inject(0) {|sum, x| Rational(sum, x) == ratio ? (return x) : (sum += x.bounciness) }
+    inject(0) {|sum, x| Rational(sum, x) == ratio ? (return x) : (sum + x.bounciness) }
   end
 end
 
