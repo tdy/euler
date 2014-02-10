@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 #
+# Bouncy numbers
+# http://projecteuler.net/problem=112
+#
 # Working from left-to-right if no digit is exceeded by the digit to its left
 # it is called an increasing number; for example, 134468.
 #
@@ -19,27 +22,29 @@
 # Find the least number for which the proportion of bouncy numbers is exactly 99%.
 #
 
-class Fixnum
+class Integer
   def increasing?
-    to_s.chars.each_cons(2) {|cons| return false if cons[0] > cons[1] } or true
+    to_s.chars.each_cons(2) {|x, y| return false if x > y } or true
   end
 
   def decreasing?
-    to_s.chars.each_cons(2) {|cons| return false if cons[0] < cons[1] } or true
+    to_s.chars.each_cons(2) {|x, y| return false if x < y } or true
   end
 
   def bouncy?
     not increasing? and not decreasing?
   end
-end
 
-def min_with_bouncy_ratio_of(ratio)
-  bouncy = 0
-  1.upto(Float::INFINITY) do |index|
-    bouncy += 1 if index.bouncy?
-    return index if bouncy / Float(index) == ratio
+  def bounciness
+    bouncy? ? 1 : 0
   end
 end
 
-p min_with_bouncy_ratio_of(0.99)
+class Enumerator
+  def min_with_bouncy_ratio_of(ratio)
+    inject(0) {|sum, x| Rational(sum, x) == ratio ? (return x) : (sum += x.bounciness) }
+  end
+end
+
+p 1.upto(Float::INFINITY).min_with_bouncy_ratio_of(0.99)
 # => 1587000
