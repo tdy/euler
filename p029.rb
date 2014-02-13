@@ -19,7 +19,6 @@
 # and 2 ≤ b ≤ 100?
 #
 
-combos, rangea, rangeb = [], 2..100, 2..100
-rangea.each {|a| rangeb.each {|b| combos << a**b }}
-p combos.uniq.sort.size
+doma = domb = (2..100).to_a
+p doma.product(domb).map {|a, b| a**b }.uniq.size
 # => 9183
