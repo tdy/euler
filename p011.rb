@@ -57,19 +57,19 @@ GRID = [
 ]
 
 def product_down_from(row, col)
-  GRID[row][col] * GRID[row+1][col] * GRID[row+2][col] * GRID[row+3][col]
+  (0..3).inject(1) {|product, x| product * GRID[row+x][col] }
 end
 
 def product_right_from(row, col)
-  GRID[row][col] * GRID[row][col+1] * GRID[row][col+2] * GRID[row][col+2]
+  (0..3).inject(1) {|product, x| product * GRID[row][col+x] }
 end
 
 def product_diag_from(row, col)
-  GRID[row][col] * GRID[row+1][col+1] * GRID[row+2][col+2] * GRID[row+3][col+3]
+  (0..3).inject(1) {|product, x| product * GRID[row+x][col+x] }
 end
 
 def product_anti_from(row, col)
-  GRID[row][col] * GRID[row+1][col-1] * GRID[row+2][col-2] * GRID[row+3][col-3]
+  (0..3).inject(1) {|product, x| product * GRID[row+x][col-x] }
 end
 
 rows, cols = GRID.size, GRID[0].size
