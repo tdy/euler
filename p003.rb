@@ -11,7 +11,7 @@
 class Integer
   def largest_prime_factor
     upper = self
-    2.upto(Float::INFINITY).each do |lower|
+    2.upto(Float::INFINITY) do |lower|
       upper /= lower while upper % lower == 0
       return (upper > lower ? upper : lower) if lower**2 > upper
     end
