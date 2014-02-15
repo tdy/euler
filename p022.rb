@@ -17,9 +17,6 @@
 
 require "csv"
 
-names = []
-CSV.foreach("p022_names.txt") {|row| names += row }
-
 class String
   def score
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -27,5 +24,6 @@ class String
   end
 end
 
+names = CSV.foreach("p022_names.txt").inject([], :+)
 p names.sort.each.with_index.inject(0) {|sum, (x,i)| sum + (i+1)*x.score }
 # => 871198282
