@@ -17,10 +17,6 @@
 require "prime"
 
 class Numeric
-  def prime?
-    Prime.prime?(self)
-  end
-
   def primes_upto(max)
     if block_given?
       Prime.take_while {|x| x <= max }.each {|y| yield y if y >= self }
